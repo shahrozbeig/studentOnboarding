@@ -1,0 +1,116 @@
+<h2>On board new student</h2>
+<form class="onborading-form" [formGroup]="onBoardingForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="studentName">Student Name</label>
+    <input type="text" formControlName="studentName" class="form-control" [readOnly]="(isNonEditable)"
+      [ngClass]="{ 'is-invalid': submitted && formField.studentName.errors }" />
+    <div *ngIf="submitted && !!formField.studentName.errors" class="invalid-feedback">
+      <div *ngIf="!!formField.studentName.errors.required">Student Name is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <label for="rollNumber">Roll Number</label>
+      <input type="number" min="0" max="1000" required formControlName="rollNumber" class="form-control" [readOnly]="(isNonEditable)"
+        [ngClass]="{ 'is-invalid': submitted && formField.rollNumber.errors }" />
+      <div *ngIf="submitted && !!formField.rollNumber.errors" class="invalid-feedback">
+        <div *ngIf="!!formField.rollNumber.errors.required">Roll Number is required</div>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select #category ng-model="myColor"  ng-model="selectedCategory" formControlName="category" class="form-control" (change)="categoryChangeHandler($event.target.value)"
+      [ngClass]="{ 'is-invalid': submitted && formField.category.errors }" >
+      <option value="">-- choose category of the student --</option>
+      <option value="domestic">Domestic</option>
+      <option value="international">International</option>
+    </select>
+    <div *ngIf="submitted && !!formField.category.errors" class="invalid-feedback">
+      <div *ngIf="!!formField.category.errors.required">Category is required</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="enableCheckboxes">
+    <label for="domicile">Domicile Certificate</label>
+    <span *ngIf="isInternational || isDomestic" style="color: red;">*</span> &nbsp;
+    <mat-checkbox [disabled]="isNonEditable" formControlName="domicile"
+      [ngClass]="{ 'is-invalid': submitted && formField.domicile.errors }"></mat-checkbox>
+  </div>
+  <div class="form-group" *ngIf="enableCheckboxes">
+    <label for="birthCertificate">Birth Certificate</label>
+    <span *ngIf="isInternational || isDomestic" style="color: red;">*</span> &nbsp;
+    <mat-checkbox  [disabled]="isNonEditable" formControlName="birthCertificate"
+      [ngClass]="{ 'is-invalid': submitted && formField.birthCertificate.errors }" ></mat-checkbox>
+  </div>
+  <div class="form-group" *ngIf="enableCheckboxes">
+    <label for="previousMarksheets">Previous marksheets</label>
+    <span *ngIf="isInternational || isDomestic" style="color: red;">*</span> &nbsp;
+    <mat-checkbox class="example-margin" [disabled]="isNonEditable" formControlName="previousMarksheets"
+    [ngClass]="{ 'is-invalid': submitted && formField.previousMarksheets.errors }"></mat-checkbox>
+  </div>
+  <div class="form-group" *ngIf="enableCheckboxes">
+    <label for="policeClearance">Police clearance</label>
+    <span *ngIf="isInternational" style="color: red;">*</span> &nbsp;
+    <mat-checkbox class="example-margin" [disabled]="isNonEditable" formControlName="policeClearance"
+    [ngClass]="{ 'is-invalid': submitted && formField.policeClearance.errors }" ></mat-checkbox>
+  </div>
+
+  <div class="form-group" *ngIf="enableCheckboxes">
+    <label for="passport">Passport </label>
+    <span *ngIf="isInternational" style="color: red;">*</span> &nbsp;
+    <mat-checkbox [required]="isInternational" class="example-margin" [disabled]="isNonEditable" formControlName="passport" [ngClass]="{ 'is-invalid': submitted && formField.passport.errors }" ></mat-checkbox>
+  </div>
+  <div class="form-group" *ngIf="enableCheckboxes">
+    <label for="signedDeclaration">Signed declaration</label>
+    <span *ngIf="isInternational || isDomestic" style="color: red;">*</span> &nbsp;
+    <mat-checkbox  [disabled]="isNonEditable" formControlName="signedDeclaration"
+    [ngClass]="{ 'is-invalid': submitted && formField.signedDeclaration.errors }" ></mat-checkbox>
+  </div>
+
+  <div class="form-group">
+      <label for="dateOfBirth">Date Of Birth</label>
+      <input type="date" formControlName="dateOfBirth" class="form-control" [readOnly]="(isNonEditable)"
+        [ngClass]="{ 'is-invalid': submitted && formField.dateOfBirth.errors }" />
+      <div *ngIf="submitted && !!formField.dateOfBirth.errors" class="invalid-feedback">
+        <div *ngIf="!!formField.dateOfBirth.errors.required">Student's DOB is required</div>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="fatherName">Father's Name</label>
+    <input type="text" formControlName="fatherName" class="form-control" [readOnly]="(isNonEditable)"
+      [ngClass]="{ 'is-invalid': submitted && formField.fatherName.errors }" />
+    <div *ngIf="submitted && !!formField.fatherName.errors" class="invalid-feedback">
+      <div *ngIf="!!formField.fatherName.errors.required">Father Name is required is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="motherName">Mother's Name</label>
+      <input type="text" formControlName="motherName" class="form-control" [readOnly]="(isNonEditable)"
+        [ngClass]="{ 'is-invalid': submitted && formField.motherName.errors }" />
+      <div *ngIf="submitted && !!formField.motherName.errors" class="invalid-feedback">
+        <div *ngIf="!!formField.motherName.errors.required">Mother Name is required</div>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="lastscore">Last Class Score</label>
+      <input type="number" min="0" max="100" required formControlName="lastscore" class="form-control" [readOnly]="(isNonEditable)"
+        [ngClass]="{ 'is-invalid': submitted && formField.lastscore.errors }" />
+      <div *ngIf="submitted && !!formField.lastscore.errors" class="invalid-feedback">
+        <div *ngIf="!!formField.lastscore.errors.required">Last class score is required</div>
+      </div>
+  </div>
+
+  <div *ngIf="documentsCheckboxErrorIS" style="color: red">For International category students, All the documents are required</div>
+  <div *ngIf="documentsCheckboxErrorDS" style="color: red">For Domestic category students, All the documents are required except Police Clearance and Passport</div>
+
+  <div class="form-group">
+    <button *ngIf="!fromCard" [disabled]="loading || isNonEditable" class="btn btn-primary">On Board</button>
+    <img *ngIf="loading"
+      src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    <button *ngIf="fromCard && !isNonEditable" class="btn btn-primary" (click)="updateStudentData(student.rollNumber)" [routerLink]="['/onboardingForm']" routerLinkActive="router-link-active" >Update Details</button>
+  </div>
+
+</form>

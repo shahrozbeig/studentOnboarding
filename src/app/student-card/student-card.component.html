@@ -1,0 +1,34 @@
+<mat-card
+  [ngClass]="{'internationalStudentCard': student.category == 'international', 'domesticStudentCard': student.category == 'domestic'}">
+  <h2>{{student.studentName}}</h2>
+  <mat-card-header>
+    <mat-card-title>Roll Number: <b>{{student.rollNumber}}</b></mat-card-title>
+    <mat-card-subtitle>Category: <b>{{student.category}}</b></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions class="button-row">
+    <button mat-stroked-button color="primary" (click)="viewStudentDetails(student.rollNumber)">View</button>
+    <button mat-stroked-button color="primary" (click)="editStudentDetails(student.rollNumber)">Edit</button>
+    <button mat-stroked-button color="primary" (click)="openModal()">Delete</button>
+  </mat-card-actions>
+</mat-card>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" style="text-align: center">Caution</h4>
+              <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span
+                aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <img *ngIf="loading"
+                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+              <div class="span5">Are you sure want to delete this student?</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="deleteStudent(student.rollNumber)">Yes</button>
+                <button type="button" class="btn btn-default" (click)="onCloseHandled()">No</button>
+            </div>
+          </div>
+    </div>
+  </div>

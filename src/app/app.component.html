@@ -1,0 +1,24 @@
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <a class="nav-item nav-link navbar-brand" routerLink="/">On Boardnig App</a>
+  <div class="container navbar-nav">
+      <span class="nav-item nav-link navbar-brand" routerLink="/"></span>
+      <ul class="nav navbar-nav" routerLinkActive="active">
+          <li class="nav-item"><span class="nav-link" routerLink="home">{{ currentUser.firstName}}</span></li>
+          <li class="nav-item"><a class="nav-link ml-auto" (click)="logout()">Logout</a></li>
+      </ul>
+  </div>
+</nav>
+<br/>
+<nav class="navbar navbar-expand navbar-dark bg-dark" style="width: 30%" *ngIf="currentUser">
+    <a class="nav-item nav-link navbar-brand" routerLink="/onboardingForm">On Boardnig App</a>
+    <a class="nav-item nav-link navbar-brand" routerLink="/studentList">Student List</a>
+</nav>
+
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+    <alert></alert>
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class='card-body'>
+    <div class='row'>
+      <div class='col-md-1'>Filter by:</div>
+      <div class='col-md-2'>
+        <input type='text' [(ngModel)]='listFilter' />
+      </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-2">Filter By Category</div>
+        <select ng-model="filterCategory" (change)="categoryChangeHandler($event.target.value)" [(value)]="selectedCategory">
+          <option value="" >All</option>
+          <option value="Domestic">Domestic</option>
+          <option value="International">International</option>
+        </select>
+    </div>
+</div>
+
+<div  class="cardList" >
+    <app-student-card style="width: 40%;" *ngFor ='let student of filteredStudents' (notifyDelete)="deletedEventHandler($event)" [student]='student'></app-student-card>
+</div>
+<div *ngIf="!filteredStudents.length">
+  <h2> No Student Onboarded Yet</h2>
+</div>

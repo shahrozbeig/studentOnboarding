@@ -1,0 +1,36 @@
+.checkboxes label {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  flex-flow: row;
+}
+.mat-checkbox {
+  margin-left:20px;
+}
+.mat-checkbox-inner-container {
+  margin: 2px 8px auto 0 !important;
+}
+
+::ng-deep .mat-checkbox-input {
+  height: 16px !important;
+  width: 16px !important;
+}
+
+ ::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border-color: lightgray;
+}
+
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+  background-color: black !important;
+}
+
+.onborading-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-full-width {
+  width: 100%;
+}

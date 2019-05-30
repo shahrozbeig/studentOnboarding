@@ -1,0 +1,51 @@
+.internationalStudentCard {
+  max-width: 400px;
+  /* box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 2px ; */
+  /* border-width: 15px; */
+  border-radius: 25px;
+  border-style: solid;
+  border-color: black;
+  background-color: orange;
+  margin-bottom: 32px;
+}
+
+.domesticStudentCard {
+  max-width: 400px;
+  /* box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 2px ; */
+  /* border-width: 15px; */
+  border-radius: 25px;
+  border-style: solid;
+  border-color: black;
+  background-color: lightblue;
+  margin-bottom: 32px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+}
+
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  width: 500px;
+}
